@@ -1,6 +1,6 @@
 plugins {
-    id("com.android.application")
-    id("kotlin-android")
+    id(GradlePluginId.ANDROID_APPLICATION)
+    id(GradlePluginId.KOTLIN)
 }
 
 android {
@@ -26,7 +26,7 @@ android {
     }
 
     buildTypes {
-        getByName("release") {
+        getByName(BuildType.RELEASE) {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
@@ -48,6 +48,7 @@ android {
 }
 
 dependencies {
+    implementation(Dependencies.KOTLIN)
     implementation(Dependencies.CORE_KTX)
     implementation(Dependencies.COMPOSE_UI)
     implementation(Dependencies.COMPOSE_MATERIAL)
