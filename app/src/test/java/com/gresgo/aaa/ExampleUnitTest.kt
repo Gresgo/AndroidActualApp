@@ -1,4 +1,4 @@
-package com.github.gresgo
+package com.gresgo.aaa
 
 import org.junit.Test
 
