@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    compileSdkVersion(AndroidConfig.compileSdk)
+    compileSdkVersion(AndroidConfig.COMPILE_SDK)
 
     compileOptions {
         sourceCompatibility(JavaVersion.VERSION_1_8)
@@ -16,11 +16,11 @@ android {
     }
 
     defaultConfig {
-        applicationId = AndroidConfig.appId
-        minSdkVersion(AndroidConfig.minSdk)
-        targetSdkVersion(AndroidConfig.targetSdk)
-        versionCode = AndroidConfig.versionCode
-        versionName = AndroidConfig.versionName
+        applicationId = AndroidConfig.APP_ID
+        minSdkVersion(AndroidConfig.MIN_SDK)
+        targetSdkVersion(AndroidConfig.TARGET_SDK)
+        versionCode = AndroidConfig.VERSION_CODE
+        versionName = AndroidConfig.VERSION_NAME
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -31,14 +31,24 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
+
+    buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = Versions.COMPOSE
+    }
 }
 
 dependencies {
-    implementation(Dependencies.coreKtx)
-    implementation(Dependencies.appcompat)
-    implementation(Dependencies.material)
-    implementation(Dependencies.constraintLayout)
-    testImplementation(TestDependencies.junit)
-    androidTestImplementation(TestDependencies.junitExt)
-    androidTestImplementation(TestDependencies.espresso)
+    implementation(Dependencies.CORE_KTX)
+    implementation(Dependencies.COMPOSE_UI)
+    implementation(Dependencies.COMPOSE_MATERIAL)
+    implementation(Dependencies.COMPOSE_FOUNDATION)
+    implementation(Dependencies.COMPOSE_ACTIVITY)
+
+    testImplementation(TestDependencies.JUNIT)
+    androidTestImplementation(TestDependencies.JUNIT_EXT)
+    androidTestImplementation(TestDependencies.ESPRESSO)
 }
