@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    compileSdkVersion(AndroidConfig.COMPILE_SDK)
+    compileSdk = AndroidConfig.COMPILE_SDK
 
     compileOptions {
         sourceCompatibility(JavaVersion.VERSION_1_8)
@@ -17,8 +17,8 @@ android {
 
     defaultConfig {
         applicationId = AndroidConfig.APP_ID
-        minSdkVersion(AndroidConfig.MIN_SDK)
-        targetSdkVersion(AndroidConfig.TARGET_SDK)
+        minSdk = AndroidConfig.MIN_SDK
+        targetSdk = AndroidConfig.TARGET_SDK
         versionCode = AndroidConfig.VERSION_CODE
         versionName = AndroidConfig.VERSION_NAME
 
