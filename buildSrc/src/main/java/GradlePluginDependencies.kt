@@ -1,5 +1,5 @@
 object GradlePluginVersion {
-    const val ANDROID = "7.1.1"
+    const val ANDROID = "7.1.2"
     const val KOTLIN = "1.6.10"
 }
 
@@ -11,4 +11,9 @@ object GradlePluginId {
     const val KAPT = "kapt"
     const val HILT = "dagger.hilt.android.plugin"
     const val ANDROID_CONFIG = "android-config"
+}
+
+object GradlePluginDependency {
+    const val ANDROID_BUILD_TOOLS = "com.android.tools.build:gradle:${GradlePluginVersion.ANDROID}"
+    const val KOTLIN_GRADLE_PLUGIN = "org.jetbrains.kotlin:kotlin-gradle-plugin:${GradlePluginVersion.KOTLIN}"
 }

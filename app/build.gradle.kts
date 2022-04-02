@@ -1,49 +1,11 @@
 plugins {
     id(GradlePluginId.ANDROID_APPLICATION)
-    id(GradlePluginId.KOTLIN)
+    id(GradlePluginId.ANDROID_CONFIG)
 }
 
 android {
-    compileSdk = AndroidConfig.COMPILE_SDK
-
-    compileOptions {
-        sourceCompatibility(JavaVersion.VERSION_1_8)
-        targetCompatibility(JavaVersion.VERSION_1_8)
-    }
-
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
-    }
-
     defaultConfig {
         applicationId = AndroidConfig.APP_ID
-        minSdk = AndroidConfig.MIN_SDK
-        targetSdk = AndroidConfig.TARGET_SDK
-        versionCode = AndroidConfig.VERSION_CODE
-        versionName = AndroidConfig.VERSION_NAME
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    buildTypes {
-        getByName(BuildType.RELEASE) {
-            isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-        }
-    }
-
-    buildFeatures {
-        compose = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = Versions.COMPOSE
-    }
-
-    packagingOptions {
-        resources {
-            excludes.add("/META-INF/{AL2.0,LGPL2.1}")
-        }
     }
 }
 
