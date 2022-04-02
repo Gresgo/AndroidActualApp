@@ -1,4 +1,4 @@
-package com.github.gresgo.ui.themes
+package com.gresgo.aaa.ui.themes
 
 import androidx.compose.ui.graphics.Color
 

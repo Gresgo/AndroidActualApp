@@ -1,4 +1,4 @@
-package com.github.gresgo.ui.themes
+package com.gresgo.aaa.ui.themes
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
