@@ -1,4 +1,5 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+// TODO: conflict with gradle in buildSrc
 //plugins {
 //    id(GradlePluginId.ANDROID_APPLICATION) version GradlePluginVersion.ANDROID apply false
 //    id(GradlePluginId.ANDROID_LIBRARY) version GradlePluginVersion.ANDROID apply false
