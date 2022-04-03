@@ -9,4 +9,5 @@ dependencies {
     api(Dependencies.COROUTINES_ANDROID)
 
     api(project(":core:core-navigation"))
+    api(project(":core:core-presentation"))
 }

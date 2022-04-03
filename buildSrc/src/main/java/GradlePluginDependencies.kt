@@ -1,7 +1,7 @@
 object GradlePluginVersion {
     const val ANDROID = "7.1.2"
     const val KOTLIN = "1.6.10"
-    const val HILT = "2.41"
+    const val HILT = "2.40.1"
 }
 
 object GradlePluginId {
