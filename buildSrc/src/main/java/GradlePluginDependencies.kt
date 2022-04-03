@@ -1,6 +1,7 @@
 object GradlePluginVersion {
     const val ANDROID = "7.1.2"
     const val KOTLIN = "1.6.10"
+    const val HILT = "2.41"
 }
 
 object GradlePluginId {
@@ -16,4 +17,5 @@ object GradlePluginId {
 object GradlePluginDependency {
     const val ANDROID_BUILD_TOOLS = "com.android.tools.build:gradle:${GradlePluginVersion.ANDROID}"
     const val KOTLIN_GRADLE_PLUGIN = "org.jetbrains.kotlin:kotlin-gradle-plugin:${GradlePluginVersion.KOTLIN}"
+    const val HILT = "com.google.dagger:hilt-android-gradle-plugin:${GradlePluginVersion.HILT}"
 }

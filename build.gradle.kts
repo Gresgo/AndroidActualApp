@@ -13,6 +13,7 @@ buildscript {
     dependencies {
         classpath(GradlePluginDependency.ANDROID_BUILD_TOOLS)
         classpath(GradlePluginDependency.KOTLIN_GRADLE_PLUGIN)
+        classpath(GradlePluginDependency.HILT)
     }
 }
 
