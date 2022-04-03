@@ -16,3 +16,9 @@ dependencyResolutionManagement {
 }
 rootProject.name = "AndroidActualApp"
 include(":app")
+
+include(
+    ":core:core",
+    ":core:core-navigation",
+    ":core:core-presentation"
+)

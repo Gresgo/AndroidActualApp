@@ -12,14 +12,9 @@ android {
 }
 
 dependencies {
-    implementation(Dependencies.KOTLIN)
-    implementation(Dependencies.COMPOSE_COMPILER)
-    implementation(Dependencies.COMPOSE_FOUNDATION)
-    implementation(Dependencies.COMPOSE_UI)
-    implementation(Dependencies.COMPOSE_UI_TOOLING)
-    implementation(Dependencies.COMPOSE_MATERIAL)
-    implementation(Dependencies.COMPOSE_ANIMATIONS)
-    implementation(Dependencies.COMPOSE_ACTIVITY)
+    implementation(project(":core:core"))
+    implementation(project(":core:core-navigation"))
+    implementation(project(":core:core-presentation"))
 
     implementation(Dependencies.HILT)
     kapt(Dependencies.HILT_COMPILER)
