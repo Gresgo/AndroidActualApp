@@ -22,3 +22,7 @@ include(
     ":core:core-navigation",
     ":core:core-presentation"
 )
+
+include(
+    ":feature:home"
+)
