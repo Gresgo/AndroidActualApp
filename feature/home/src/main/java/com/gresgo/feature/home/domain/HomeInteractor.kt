@@ -2,13 +2,12 @@ package com.gresgo.feature.home.domain
 
 interface HomeInteractor {
 
-    suspend fun fetchGitRepos(refresh: Boolean): List<GitRepoDomain>
+    suspend fun fetchGitRepos(refresh: Boolean): HomeResult
 
     class Base(
         private val homeRepository: HomeRepository
     ): HomeInteractor {
-        override suspend fun fetchGitRepos(refresh: Boolean): List<GitRepoDomain> {
-            return homeRepository.fetchGitRepos(refresh)
-        }
+        override suspend fun fetchGitRepos(refresh: Boolean): HomeResult =
+            homeRepository.fetch(refresh)
     }
 }
