@@ -21,6 +21,8 @@ dependencies {
     implementation(Dependencies.HILT)
     kapt(Dependencies.HILT_COMPILER)
 
+    kapt(Dependencies.ROOM_KAPT)
+
     testImplementation(TestDependencies.JUNIT)
     androidTestImplementation(TestDependencies.JUNIT_EXT)
     androidTestImplementation(TestDependencies.ESPRESSO)

@@ -2,6 +2,7 @@ object Versions {
     const val COMPOSE = "1.1.1"
     const val COROUTINES = "1.6.0"
     const val HILT_COMPOSE = "1.0.0"
+    const val ROOM = "2.4.2"
 }
 
 object Dependencies {
@@ -29,6 +30,11 @@ object Dependencies {
     const val COMPOSE_ACTIVITY = "androidx.activity:activity-compose:1.4.0"
     const val COMPOSE_NAVIGATION = "androidx.navigation:navigation-compose:2.4.1"
     const val HILT_COMPOSE_NAVIGATION = "androidx.hilt:hilt-navigation-compose:${Versions.HILT_COMPOSE}"
+
+    // Room
+    const val ROOM = "androidx.room:room-runtime:${Versions.ROOM}"
+    const val ROOM_KAPT = "androidx.room:room-compiler:${Versions.ROOM}"
+    const val ROOM_COROUTINES = "androidx.room:room-ktx:${Versions.ROOM}"
 }
 
 object TestDependencies {

@@ -8,6 +8,10 @@ plugins {
 dependencies {
     implementation(project(":core:core"))
 
+    kapt(Dependencies.ROOM_KAPT)
+
     implementation(Dependencies.HILT)
     kapt(Dependencies.HILT_COMPILER)
+
+    testImplementation(TestDependencies.JUNIT)
 }
