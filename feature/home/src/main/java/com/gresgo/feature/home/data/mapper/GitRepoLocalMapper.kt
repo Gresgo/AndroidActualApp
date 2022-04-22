@@ -1,29 +1,33 @@
 package com.gresgo.feature.home.data.mapper
 
 import com.gresgo.feature.home.data.model.GitRepoData
-import com.gresgo.feature.home.data.model.GitRepoLocal
+import com.gresgo.feature.home.data.model.GitRepoEntity
 
 interface GitRepoLocalMapper {
 
-    fun map(local: GitRepoLocal): GitRepoData
-    fun map(data: GitRepoData): GitRepoLocal
+    companion object {
+        private const val SPLITTER = ":"
+    }
+
+    fun map(entity: GitRepoEntity): GitRepoData
+    fun map(data: GitRepoData): GitRepoEntity
 
     class Base: GitRepoLocalMapper {
-        override fun map(local: GitRepoLocal): GitRepoData {
+        override fun map(entity: GitRepoEntity): GitRepoData {
             return GitRepoData(
-                id = local.id,
-                ownerId = local.ownerId,
-                name = local.name,
-                owner = local.owner,
-                description = local.description,
-                language = local.language,
-                starsCount = local.starsCount,
-                watchersCount = local.watchersCount,
-                topics = local.topics
+                id = entity.id,
+                ownerId = entity.ownerId,
+                name = entity.name,
+                owner = entity.owner,
+                description = entity.description,
+                language = entity.language,
+                starsCount = entity.starsCount,
+                watchersCount = entity.watchersCount,
+                topics = entity.topics.split(SPLITTER)
             )
         }
-        override fun map(data: GitRepoData): GitRepoLocal {
-            return GitRepoLocal(
+        override fun map(data: GitRepoData): GitRepoEntity {
+            return GitRepoEntity(
                 id = data.id,
                 ownerId = data.ownerId,
                 name = data.name,
@@ -32,7 +36,7 @@ interface GitRepoLocalMapper {
                 language = data.language,
                 starsCount = data.starsCount,
                 watchersCount = data.watchersCount,
-                topics = data.topics
+                topics = data.topics.joinToString { item -> "$item$SPLITTER" }
             )
         }
     }
