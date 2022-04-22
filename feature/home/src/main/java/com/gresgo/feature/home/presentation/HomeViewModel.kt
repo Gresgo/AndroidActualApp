@@ -4,19 +4,19 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.gresgo.core.safeLaunch
 import com.gresgo.core_navigation.Router
-import com.gresgo.core_navigation.Screens
 import com.gresgo.core_presentation.Content
+import com.gresgo.core_presentation.Empty
 import com.gresgo.core_presentation.Error
 import com.gresgo.core_presentation.Loading
 import com.gresgo.core_presentation.extension.update
 import com.gresgo.feature.home.presentation.model.GitRepo
 import com.gresgo.feature.home.domain.HomeInteractor
+import com.gresgo.feature.home.domain.HomeResult
 import com.gresgo.feature.home.presentation.mapper.GitRepoDomainMapper
 import com.gresgo.feature.home.presentation.model.HomeViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import javax.inject.Inject
 
@@ -39,10 +39,9 @@ class HomeViewModel @Inject constructor(
         _viewState.update { copy(repos = Loading()) }
         viewModelScope.safeLaunch(
             block = {
-                val reposDomain = homeInteractor.fetchGitRepos(refresh)
-                val reposUi = reposDomain.map { mapper.map(it) }
                 delay(3000)
-                _viewState.update { copy(repos = Content(reposUi)) }
+                val result = homeInteractor.fetchGitRepos(refresh)
+                handleResult(result)
             },
             onError = {
                 _viewState.update { copy(repos = Error(it)) }
@@ -50,10 +49,36 @@ class HomeViewModel @Inject constructor(
         )
     }
 
+    private fun handleResult(result: HomeResult) {
+        when(result) {
+            is HomeResult.Success -> {
+                if (result.data.isNotEmpty()) {
+                    _viewState.update {
+                        copy(repos = Content(result.data.map { mapper.map(it) }))
+                    }
+                } else {
+                    _viewState.update {
+                        copy(repos = Empty())
+                    }
+                }
+            }
+            is HomeResult.Failure -> {
+                if (result.data.isNotEmpty()) {
+                    _viewState.update {
+                        copy(repos = Content(result.data.map { mapper.map(it) }))
+                    }
+                    // TODO: show message to user
+                } else {
+                    _viewState.update { copy(repos = Error(result.error)) }
+                }
+            }
+        }
+    }
+
     fun onReload() = fetch(true)
 
     fun onRepoClick(repo: GitRepo) {
-        router.navigate(Screens.toDetails("${repo.author}/${repo.name}"))
+//        router.navigate(Screens.toDetails())
     }
 
 }

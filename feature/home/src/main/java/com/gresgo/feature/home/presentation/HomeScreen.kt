@@ -13,6 +13,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.gresgo.core_presentation.Content
+import com.gresgo.core_presentation.Empty
 import com.gresgo.core_presentation.Error
 import com.gresgo.core_presentation.Loading
 import com.gresgo.feature.home.presentation.view.GitRepoView
@@ -43,7 +44,11 @@ fun HomeScreen(viewModel: HomeViewModel) {
             }
         }
         is Error -> {
-            Column {
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
                 Text(text = "error: ${reposState.throwable}")
                 Button(onClick = viewModel::onReload) {
                     Text(text = "Try again")
@@ -53,6 +58,11 @@ fun HomeScreen(viewModel: HomeViewModel) {
         is Loading -> {
             Box(modifier = Modifier.fillMaxSize()) {
                 CircularProgressIndicator(Modifier.align(Alignment.Center))
+            }
+        }
+        is Empty -> {
+            Box(modifier = Modifier.fillMaxSize()) {
+                Text("There is nothing to show", Modifier.align(Alignment.Center))
             }
         }
     }
