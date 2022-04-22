@@ -16,8 +16,12 @@ dependencies {
     implementation(project(":core:core-navigation"))
     implementation(project(":core:core-presentation"))
 
+    implementation(project(":feature:home"))
+
     implementation(Dependencies.HILT)
     kapt(Dependencies.HILT_COMPILER)
+
+    kapt(Dependencies.ROOM_KAPT)
 
     testImplementation(TestDependencies.JUNIT)
     androidTestImplementation(TestDependencies.JUNIT_EXT)
